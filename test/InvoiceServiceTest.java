@@ -1,11 +1,11 @@
-import static org.junit.Assert.assertEquals;
-
-import dto.InvoiceDetails;
+import model.MonthlyInvoice;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import service.InvoiceService;
 
-public class InvoiceServiceTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class InvoiceServiceTest {
 
 	@CsvSource({
 			"ABC,	2, 		3, 		35, 	5, 		11800.0,		35400.0,		0.0, 		560.0, 		47760.0, 		7260.0",
@@ -13,20 +13,21 @@ public class InvoiceServiceTest {
 			"ABC, 	2, 		0, 		0, 		30, 	11800.0,		0.0, 			0.0,		3360.0, 	15160.0, 		2160.0"
 	})
 	@ParameterizedTest
-	public void calculateMonthlyInvoiceTest(String companyName, Integer openSeats, Integer cabinSeats, Integer conferenceHours, Integer meals,
+	void calculateMonthlyInvoiceTest(String companyName, Integer openSeats, Integer cabinSeats, Integer conferenceHours, Integer meals,
 											Double totalOpenSeatsPrice, Double totalCabinSeatsPrice, Double totalConferencePrice, Double totalMealsPrice,
 											Double totalBill, Double totalGST) {
 
 
-		InvoiceDetails invoiceDetails = new InvoiceDetails(companyName, openSeats, cabinSeats, conferenceHours, meals);
-		InvoiceService.calculateMonthlyInvoice(invoiceDetails);
+		MonthlyInvoice monthlyInvoice = new MonthlyInvoice(companyName, openSeats, cabinSeats, conferenceHours, meals);
+		InvoiceService invoiceService = new InvoiceService();
+		invoiceService.calculateMonthlyInvoice(monthlyInvoice);
 
-		assertEquals(totalOpenSeatsPrice, invoiceDetails.getTotalOpenSeatsPrice());
-		assertEquals(totalCabinSeatsPrice, invoiceDetails.getTotalCabinSeatsPrice());
-		assertEquals(totalConferencePrice, invoiceDetails.getTotalConferenceHoursPrice());
-		assertEquals(totalMealsPrice, invoiceDetails.getTotalMealsPrice());
-		assertEquals(totalMealsPrice, invoiceDetails.getTotalMealsPrice());
-		assertEquals(totalBill, invoiceDetails.getTotalBill());
-		assertEquals(totalGST, invoiceDetails.getTotalGST());
+		assertEquals(totalOpenSeatsPrice, monthlyInvoice.getTotalOpenSeatsPrice());
+		assertEquals(totalCabinSeatsPrice, monthlyInvoice.getTotalCabinSeatsPrice());
+		assertEquals(totalConferencePrice, monthlyInvoice.getTotalConferenceHoursPrice());
+		assertEquals(totalMealsPrice, monthlyInvoice.getTotalMealsPrice());
+		assertEquals(totalMealsPrice, monthlyInvoice.getTotalMealsPrice());
+		assertEquals(totalBill, monthlyInvoice.getTotalBill());
+		assertEquals(totalGST, monthlyInvoice.getTotalGST());
 	}
 }
