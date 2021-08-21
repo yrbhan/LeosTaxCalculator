@@ -6,8 +6,6 @@
 .project,f\8\f8b41ce76d7b80d2b47e91b5f92c15f00eccf187
 T
 $.idea/codeStyles/codeStyleConfig.xml,d\d\dd7b3350c29c49497756c7f32c69a3bed18b1cba
-=
-bin/input.txt,4\6\467dc694fb5775517380f1100d0710afe91abcc4
 8
 Main.iml,2\e\2eb8e18e6390d085ea6c6cab32a350edbbeee6cd
 [
@@ -34,5 +32,3 @@ $.settings/org.eclipse.m2e.core.prefs,c\8\c8cb288c04fee82ed81fb7eeaa1e1b3ea20da
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 L
 .idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
-K
-src/dto/InvoiceDetails.java,5\3\539fda42806267714a72d53107e4335d5f252229
