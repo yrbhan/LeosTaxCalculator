@@ -3,6 +3,8 @@ package service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import static service.InvoiceService.DECIMAL_PLACES;
+
 /* POJO to store the product details */
 public class Product {
     private final String name;
@@ -41,7 +43,7 @@ public class Product {
         }
 
         totalTaxAmount = BigDecimal.valueOf(Math.ceil(totalTaxAmount.doubleValue() * 20) / 20);
-        totalTaxAmount = totalTaxAmount.setScale(InvoiceService.DECIMAL_PLACES, RoundingMode.HALF_UP);
+        totalTaxAmount = totalTaxAmount.setScale(DECIMAL_PLACES, RoundingMode.HALF_UP);
         totalPrice = totalPrice.add(totalTaxAmount);
     }
 
